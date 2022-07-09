@@ -1,0 +1,44 @@
+name: Release & Publish
+
+on:
+  push:
+    branches: [ <%= branch %> ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release action
+        uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: node
+          package-name: uk-export-finance/<PACKAGE-NAME>
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
+          extra-files: |
+            README.md
+            CHANGELOG.md
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        # ensure that `Setup` occurs only when a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Setup the NPM registry
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+        # ensure that the packages are installed only when a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Install the modules
+        run: npm ci
+        # ensure that the package is built only when a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Build the package
+        run: npm run build
+        # ensure that the publication only occurs when a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Publish the package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: ${{ steps.release.outputs.release_created }}
