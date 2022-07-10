@@ -2,7 +2,7 @@ name: Release & Publish
 
 on:
   push:
-    branches: [ <%= branch %> ]
+    branches: [ <%= branch %> ] # TODO: add branch name
 
 jobs:
   publish:
@@ -13,7 +13,7 @@ jobs:
         id: release
         with:
           release-type: node
-          package-name: uk-export-finance/<PACKAGE-NAME>
+          package-name: uk-export-finance/<PACKAGE-NAME> # TODO: add package name
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
           extra-files: |
             README.md
@@ -40,5 +40,5 @@ jobs:
       - name: Publish the package
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}} # TODO: add your NPM_TOKEN to Github secrets
         if: ${{ steps.release.outputs.release_created }}
