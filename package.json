@@ -1,13 +1,14 @@
 {
   "name": "@uk-export-finance/typescript-package",
-  "version": "1.0.3",
-  "description": "TypeScript Package ready to be published on NPM and Github packages",
-  "main": "dist/index.js",
+  "version": "1.0.0",
+  "description": "TypeScript Package ready to be published to NPM",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "build": "tsc",
+    "prepublishOnly": "pinst --disable && npm run build",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --ext .ts src/ --fix",
     "prepare": "husky install"
@@ -16,9 +17,9 @@
     "access": "public"
   },
   "files": [
-    "dist"
+    "lib"
   ],
-  "keywords": [],
+  "keywords": ["npm", "boilerplate", "typescript", "boilerplate-template", "npm-package", "starter-template", "typescript-boilerplate", "typescript-starter", "typescript-template-project"],
   "author": "Gabriel Ignat",
   "license": "MIT",
   "homepage": "https://github.com/UK-Export-Finance/typescript-package",
