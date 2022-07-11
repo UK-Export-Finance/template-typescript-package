@@ -7,7 +7,7 @@ The template uses [google-github-actions/release-please-action](https://github.c
 2. Automated `CHANGELOG` generation
 3. Automated version bumps based on commit messages. It does all of these by parsing the git history, it looks for [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) messages and it creates PR releases.
 
-It uses `npm`, `TypeScript`, `Jest`, `ESLint`, `Prettier`, `Husky`, `pinst`, `commitlint` and `lint-staged`. The production files include CommonJS, ES Modules and TypeScript declaration files.
+It uses `npm`, `TypeScript`, `Jest`, `ESLint`, `Prettier`, `Husky`, `commitlint` and `lint-staged`. The production files include CommonJS, ES Modules and TypeScript declaration files.
 
 #### Install dependencies
 Install dependencies with npm:

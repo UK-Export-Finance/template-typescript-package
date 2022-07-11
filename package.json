@@ -8,8 +8,7 @@
     "test": "jest --no-cache --runInBand",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "postinstall": "husky install",
-    "postpublish": "pinst --enable",
-    "prepublishOnly": "pinst --disable && npm run build",
+    "prepublishOnly": "npm run build",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "prettier --write src/ && eslint --ext .ts src/ --fix",
     "prepare": "husky install"
@@ -57,7 +56,6 @@
     "husky": "^8.0.1",
     "jest": "^28.1.2",
     "lint-staged": "^13.0.3",
-    "pinst": "^3.0.0",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",
     "ts-loader": "^9.3.1",
