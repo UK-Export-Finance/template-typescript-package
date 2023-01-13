@@ -1,6 +1,15 @@
-{
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ]
-}
+{ 
+   "$schema": "https://docs.renovatebot.com/renovate-schema.json", 
+   "extends": [ 
+     "config:base", 
+     ":separateMultipleMajorReleases",
+     ":semanticCommits"
+   ],
+   "prConcurrentLimit": 5, 
+   "prHourlyLimit": 5,
+   "dependencyDashboard": true, 
+   "dependencyDashboardTitle": "Dependencies Dashboard (Renovate Bot)", 
+   "groupName": "all",
+   "ignoreDeps": ["cache-manager-redis-store"],
+   "dependencyDashboardAutoclose": true
+ }
