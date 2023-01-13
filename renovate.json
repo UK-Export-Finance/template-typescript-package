@@ -10,6 +10,5 @@
    "dependencyDashboard": true, 
    "dependencyDashboardTitle": "Dependencies Dashboard (Renovate Bot)", 
    "groupName": "all",
-   "ignoreDeps": ["cache-manager-redis-store"],
    "dependencyDashboardAutoclose": true
  }
